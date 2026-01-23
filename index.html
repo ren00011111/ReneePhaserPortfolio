@@ -1,49 +1,302 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ReneePortfolio</title>
-        <style>
-            /* Reset CSS: Please avoid making changes here unless you know what you're doing :) */
-            *,
-            *::before,
-            *::after {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-    
-            html, body {
-                width: 100%;
-                height: 100%;
-            }
-    
-            body {
-                line-height: 1;
-                font-family: Arial, sans-serif;
-                background-color: #040218;
-            }
-    
-            ol, ul {
-                list-style: none;
-            }
-    
-            img, video {
-                max-width: 100%;
-                height: auto;
-                display: block;
-            }
-    
-            a {
-                text-decoration: none;
-                color: inherit;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="game-container"></div>
-        <script src="./phaser.js"></script>
-        <script type="module" src="./src/main.js"></script>
-    </body>
-    </html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReneePortfolio</title>
+  <style>
+    /* Reset CSS: Please avoid making changes here unless you know what you're doing :) (go away) */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      line-height: 1;
+      font-family: Arial, sans-serif;
+      background-color: #040218;
+      cursor: url("assets/pink-cursor.svg") 0 0,
+        auto;
+    }
+
+    body:hover {
+      cursor: url("assets/pink-cursor.svg") 0 0,
+        auto;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+    }
+
+    img,
+    video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    dialog {
+      border: none;
+      border-radius: 15px;
+      padding: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 13%;
+      background-image: url("assets/uibox.png");
+      background-position: center;
+      background-size: cover;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      scale: 2.2;
+      height: 525px;
+      width: 520px;
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(2px);
+    }
+
+    #button1 h2 {
+      margin-top: 65px;
+    }
+
+    #button1, #button2, #button3, #button4, #button5, #button6, #button7, #introDialog {
+      padding: 30px;
+    }
+ #button2 h2, #button3 h2, #button1 h2, #button5 h2, #button6 h2, #button7 h2, #introDialog h2{
+      margin-top: 130px;
+      margin-bottom: 50px;
+    }
+
+    #button5 h4, #button6 h4, #button7 h4 {
+      margin-bottom: 20px;
+    }
+
+/* Make dialog behave like a column layout */
+#button4 {
+  gap: 0;
+  padding: 30px;
+  max-height: 525px;
+}
+
+/* Keep header where it is */
+#button4 .button4head {
+  flex: 0 0 auto;
+}
+
+/* Scroll only the content area */
+#button4 .button4content {
+  flex: 1 1 auto;
+  margin-top: 0;
+  padding-right: 6px;
+}
+
+#button4 h4 {
+  display: flex;
+  align-items: center;
+  margin-bottom: -30px;
+}
+#button7 h4 {
+  display: flex;
+  align-items: center;
+  margin-bottom: -15px;
+}
+
+a, a:hover {
+  color: blue;
+}
+
+/* Remove default margins that create “mystery gaps” */
+#button4 h2 { margin: 100px 0 10px; }
+#button4 h3 { margin: -10px 0 10px; }
+#button4 .button4content p  { margin: 12px 0 0; }
+
+    .github-logo {
+      width: 40px;
+    }
+
+    .image-grid {
+      display: flex;
+      width: 125px;
+      height: 125px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Phaser mounts here -->
+  <div id="game-container">
+    </div>
+  </div>
+
+  <dialog id="introDialog">
+  <h2>Welcome!</h2>
+
+  <p>
+    Hi! My name is Renee Taylor-O'Sullivan, welcome to my portfolio! I am currently a BSc Hons Computer Science with Games Development student at the University of Brighton. Feel free to navigate around the space to view projects and relevant links to each topic.  
+    <br /><br />
+    Walk around using <strong>WASD</strong> or <strong>Arrow keys</strong>.
+    <br />
+    Interact with icons to explore my portfolio.
+    <br />
+    ESC to exit
+  </p>
+
+  <p style="margin-top: 30px;">Press ESC to begin</p>
+</dialog>
+
+
+  <!-- button 1 -->
+  <dialog id="button1">
+    <h2>Art</h2>
+    <p class="summary"></p>
+
+    <div class="image-grid">
+      <img src="assets/ArtGrid/bigpicofsprite.png" alt="renee sprite">
+      <img src="assets/ArtGrid/newsalemflipped.png" alt="salem sprite">
+    </div>
+
+    <a href="https://www.artstation.com/reneet4ylor" target="_blank" class="artstation-btn">
+      View ArtStation
+    </a>
+
+    <p class="close">Press ESC to close</p>
+  </dialog>
+
+  <!-- button 2 -->
+  <dialog id="button2">
+    <h2>Contact</h2>
+    <br/>
+    <h3>
+      Email:
+      <a
+        href="mailto:rensgamedesign@gmail.com?subject=Portfolio%20Enquiry&body=Hi%20Renee,%0D%0A%0D%0AI%20found%20your%20portfolio%20and%20would%20love%20to%20get%20in%20touch.%0D%0A%0D%0AThanks!">
+        rensgamedesign@gmail.com
+      </a>
+    </h3>
+    <br/>
+
+    <h4>
+      LinkedIn:
+      <a href="https://www.linkedin.com/in/renee-taylor-o-sullivan-b35a3027b/" target="_blank">
+        View profile
+      </a>
+    </h4>
+    <br/>
+
+    <a href="https://discord.com/users/525680950579822592" target="_blank">
+      <h4>Add me on Discord!</h4>
+    </a>
+
+    <br/>
+    <br/>
+    <p class="close">Press ESC to close</p>
+  </dialog>
+
+<!-- button 3 -->
+<dialog id="button3">
+  <h2>CV</h2>
+  <br />
+
+  <!-- Open in a new tab -->
+  <h3>
+    <a href="assets/ReneeCV.pdf" target="_blank" rel="noopener noreferrer">
+      Click here to view my CV
+    </a>
+  </h3>
+
+  <br />
+
+  <!-- Download -->
+  <h4>
+    <a href="assets/ReneeCV.pdf" download="Renee_Taylor_O_Sullivan_CV.pdf">
+      Click here to download my CV
+    </a>
+  </h4>
+
+  <br /><br />
+  <p class="close">Press ESC to close</p>
+</dialog>
+
+
+  <!-- button 4 -->
+  <dialog id="button4">
+    <div class="button4head">
+    <h2>Tech Stack + Github</h2>
+    <h3>
+      <a href="https://github.com/ren00011111" target="_blank">
+        <img src="assets/github.png" alt="GitHub" class="github-logo" />
+        Check out my Github!
+      </a>
+    </h3>
+    </div>
+
+    <div class="button4content">
+
+    <h4>C++:<img class="twohearts" src="assets/2.5hearts.png" alt="2.5 Hearts"></h4>
+    <h4>C#:<img class="twohearts" src="assets/2hearts.png" alt="Two Hearts"></h4>
+    <h4>Javascript:<img class="twohearts" src="assets/2hearts.png" alt="Two Hearts"></h4>
+    <h4>Python:<img class="twohearts" src="assets/3hearts.png" alt="Three Hearts"></h4>
+    <h4>GDScript:<img class="twohearts" src="assets/3hearts.png" alt="Three Hearts"></h4>
+
+    <p class="close">Press ESC to close</p>
+    </div>
+  </dialog>
+
+  <!-- button 5 -->
+  <dialog id="button5">
+    <h2>Games</h2>
+    <h4>Check out my Itch.io Page! <a href="https://rendroidstudios.itch.io" target="_blank">rendroidstudios.itch.io</a>
+    </h4>
+    <h4>DeathClaw (image below)</h4>
+    <p class="close">Press ESC to close</p>
+  </dialog>
+
+  <!-- button 6 -->
+  <dialog id="button6">
+    <h2>Social Media</h2>
+    <h4>Instagram <a href="https://www.instagram.com/rendroidtv" target="_blank">rendroidtv</a></h4>
+    <h4>YouTube <a href="https://www.youtube.com/channel/UCXBw4qMyia0dOaIGNa6SfSg" target="_blank">channel link</a></h4>
+    <p class="close">Press ESC to close</p>
+  </dialog>
+
+  <!-- button 7 -->
+  <dialog id="button7">
+    <h2>Translation + Localisation</h2>
+    <h4>Projects: Coming soon</h4>
+    <h4>English:<img class="twohearts" src="assets/3hearts.png" alt="Three Hearts"></h4>
+    <h4>French:<img class="twohearts" src="assets/3hearts.png" alt="Three Hearts"></h4>
+    <h4>Italian:<img class="twohearts" src="assets/2.5hearts.png" alt="Three Hearts"></h4>
+    <p class="close">Press ESC to close</p>
+  </dialog>
+
+  <script src="./phaser.js"></script>
+  <script type="module" src="./src/main.js"></script>
+  <script src="./popup-script.js"></script>
+  <script>
+  window.addEventListener("load", () => {
+    const intro = document.getElementById("introDialog");
+    if (intro) intro.showModal();
+  });
+</script>
+</body>
+
+</html>
